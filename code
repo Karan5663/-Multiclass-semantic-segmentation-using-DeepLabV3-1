@@ -268,7 +268,13 @@ from tensorflow.keras import layers, models, ops
 from tensorflow import image as tf_image
 from tensorflow import data as tf_data
 from tensorflow import io as tf_io
-
+import zipfile
+import subprocess
+subprocess.run(['gdown', 'https://docs.duckietown.org/daffy/AIDO/out/object_detection_dataset.html'])
+# # Unzip the downloaded file
+# # subprocess.run(['unzip', '-q', 'instance-level-human-parsing.zip'])
+with zipfile.ZipFile('instance-level-human-parsing.zip', 'r') as zip_ref:
+    zip_ref.extractall('destination_directory')
 # Set parameters and paths
 IMAGE_SIZE = 256
 BATCH_SIZE = 4
